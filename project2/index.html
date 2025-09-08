@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form onsubmit="displayValues()" id="empForm">
+      <input type="text" placeholder="Enter the First-Name" id="FirstName" />
+      <input type="text" placeholder="Enter Last-Name" id="LastName" />
+      <label for="dob">Enter the Date of Birth:</label>
+      <input type="date" id="dob" />
+      <input
+        type="tel"
+        pattern="[6-9]{1}[0-9]{9}"
+        id="Contact"
+        placeholder="Contact information"
+      />
+      <input
+        type="text"
+        pattern="EMP[0-9]{4}"
+        id="employeID"
+        placeholder="employeID"
+      />
+      <select name="departmentId" id="departmentId">
+        <option
+          value="Please Select a department"
+          selected
+          disabled
+          aria-readonly="true"
+        >
+          Please Select a department
+        </option>
+        <option value="H.R">H.R</option>
+        <option value="IT">IT</option>
+        <option value="Sales">Sales</option>
+        <option value="Finance">Finance</option>
+      </select>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Enter the email"
+      />
+      <label for="joiningdate">Enter the Date of joining:</label>
+      <input
+        type="date"
+        id="joiningdate"
+        min="2010-01-01"
+        max="2025-12-31"
+        placeholder="YYYY-MM-DD"
+        required
+      />
+      <input
+        type="text"
+        placeholder="Salary"
+        pattern="^[0-9]+.?[0-9]+$"
+        id="Salary"
+      />
+      <input
+        type="text"
+        pattern="EMP[0-9]{4}"
+        id="managerId"
+        placeholder="managarId"
+      />
+      <select id="Status">
+        <option>Please Select the Status</option>
+        <option value="Active">Active</option>
+        <option value="InActive">InActive</option>
+      </select>
+      <select id="Gender">
+        <option
+          value="Please Select a useful Gender"
+          selected
+          disabled
+          aria-readonly="true"
+        >
+          Please Select a useful Gender
+        </option>
+        <option value="Male">Male</option>
+        <option value="Female">female</option>
+        <option value="other">other</option>
+      </select>
+      <input
+        type="text"
+        placeholder="panId"
+        id="panId"
+        pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+      />
+      <input
+        type="text"
+        placeholder="AadharId"
+        id="AadharId"
+        pattern="^[0-9]{12}$"
+      />
+      <input type="submit" value="submit" />
+    </form>
+    <div id="showDiv" style="background-color: rebeccapurple; color: white">
+      The data will be shown here:
+    </div>
+  </body>
+  <script>
+    function displayValues() {
+      event.preventDefault();
+      let firstName = document.getElementById("FirstName");
+      console.log(document.getElementById("employeID").value);
+
+      let email = document.getElementById("email");
+      let showDiv = document.getElementById("showDiv");
+      showDiv.textContent = `The first name is ${firstName.value} and the email is ${email.value}`;
+    }
+  </script>
+</html>
