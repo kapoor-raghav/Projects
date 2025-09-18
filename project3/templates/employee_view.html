@@ -1,0 +1,51 @@
+{% extends "layout.html" %} {% block content %}
+<div class="container my-4">
+  <h2 class="mb-4 text-center">All Employee Details</h2>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>last name</th>
+        <th>dob</th>
+        <th>phone</th>
+        <th>Employee ID</th>
+        <th>Department</th>
+        <th>Email</th>
+        <th>joiningdate</th>
+        <th>Salary</th>
+        <th>status</th>
+        <th>gender</th>
+        <th>panId</th>
+        <th>aadharId</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for emp in emps %}
+      <tr>
+        <td>{{ emp.first_name }}</td>
+        <td>{{ emp.last_name }}</td>
+        <td>{{ emp.dob }}</td>
+        <td>{{ emp.phone }}</td>
+        <td>{{ emp.employee_id }}</td>
+        <td>{{ emp.department }}</td>
+        <td>{{ emp.email }}</td>
+        <td>{{ emp.join_date }}</td>
+        <td>{{ emp.salary }}</td>
+        <td>{{ emp.status }}</td>
+        <td>{{emp.gender}}</td>
+        <td>{{emp.pan}}</td>
+        <td>{{emp.adhaar}}</td>
+        <td>
+          <a
+            class="btn btn-danger"
+            href="{% url 'employee_delete' emp.employee_id%}"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock content %}

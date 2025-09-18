@@ -1,3 +1,39 @@
+import sqlite3
+
+def delete_employee(id):
+    conn = sqlite3.connect("employee_records.db")
+    cursor = conn.cursor()
+    try:
+        cursor.execute('delete from employees where employee_id=?', (id,))
+    except Exception as e:
+        raise ValueError(f"Error Deleting record {e}")
+    conn.commit()
+    conn.close()
+
+
+
+def view_employees():
+    # 1. Make DB Connection
+    # 2. Make cursor
+    # 3. Execute Query
+    # 4. Close Connection
+    # 5. Return Result 
+    conn = sqlite3.connect('employee_records.db') 
+    cursor = conn.cursor()
+    try:
+        employees = cursor.execute('''
+                select * from employees  
+                ''').fetchall()
+       #convert tuple into dict
+        employees = [dict(zip([column[0] for column in cursor.description], row)) for row in employees]
+    except Exception as e:
+        print("Error viewing record:", e)
+        raise ValueError(f"Error viewing record: {e}")
+    conn.commit()
+    conn.close()
+    return employees
+
+
 def save_employee(record):
     row_errors = [] 
 
@@ -98,7 +134,6 @@ def save_employee(record):
         raise ValueError(row_errors)
     else:
         # If record is valid, then save to DB
-        import sqlite3
         # Connect to SQLite database (or create it if it doesn't exist)
         conn = sqlite3.connect('employee_records.db')
         cursor = conn.cursor()
